@@ -1,0 +1,42 @@
+---
+import Glyph from './motifs/Glyph.astro';
+import type { RegiaoId } from '../data/regioes';
+
+interface Props {
+	glyph: RegiaoId;
+	label: string;
+}
+
+const { glyph, label } = Astro.props;
+---
+
+<div class="divider reveal">
+	<span class="divider-line"></span>
+	<Glyph name={glyph} label={label} class="divider-glyph" />
+	<span class="divider-line"></span>
+</div>
+
+<style>
+	.divider {
+		display: flex;
+		align-items: center;
+		gap: var(--space-m);
+		max-width: 32rem;
+		margin: 0 auto;
+		padding: 0 var(--space-m);
+		color: var(--line-strong);
+	}
+
+	.divider-line {
+		flex: 1;
+		height: 1px;
+		background: var(--line);
+	}
+
+	.divider :global(.divider-glyph) {
+		width: 1.5rem;
+		height: 1.5rem;
+		flex-shrink: 0;
+		color: var(--line-strong);
+	}
+</style>

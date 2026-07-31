@@ -1,0 +1,159 @@
+---
+import Triptico from '../motifs/Triptico.astro';
+
+const caminhos = [
+	{
+		nome: 'Sobreviver',
+		texto: 'Pagar a cota, comer, dormir, não apanhar. Chegar ao dia seguinte inteira.',
+	},
+	{
+		nome: 'Comprar-se',
+		texto:
+			'Guardar cada moeda que sobra até somar o preço da própria alforria. Duzentas moedas. Só uma partida inteiramente dedicada ao comércio chega lá.',
+	},
+	{
+		nome: 'Levantar-se',
+		texto:
+			'Carregar o que a rede precisa que ande. Cartas, ferro, pólvora, gente. Cada entrega custa espaço, tempo e noites de sono.',
+	},
+];
+---
+
+<section class="dilema" aria-labelledby="dilema-heading">
+	<div class="dilema-intro">
+		<h2 id="dilema-heading" class="reveal">Três saídas. Você só cabe em uma.</h2>
+		<p class="reveal">
+			Toda partida oferece três caminhos, e eles disputam exatamente as mesmas coisas: seu
+			tempo, seu espaço no tabuleiro, suas moedas e seu corpo.
+		</p>
+	</div>
+
+	<ol class="caminhos">
+		{
+			caminhos.map((c, i) => (
+				<li class="caminho reveal">
+					<span class="caminho-number" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+					<h3>{c.nome}</h3>
+					<p>{c.texto}</p>
+				</li>
+			))
+		}
+	</ol>
+
+	<div class="dilema-close">
+		<p class="reveal">
+			Quem faz o suficiente pela revolta não junta as duzentas moedas. Quem junta as duzentas
+			moedas compra a liberdade e sai da cidade antes da noite em que tudo aconteceu.
+		</p>
+
+		<p class="reveal dilema-thesis">A conta não fecha. Ela não fechava.</p>
+
+		<p class="reveal">
+			Esse é o jogo. Não é um problema de dificuldade a ser resolvido com mais habilidade, é a
+			forma como o sistema funcionava, transformada em aritmética que você sente na mão.
+		</p>
+	</div>
+
+	<figure class="dilema-triptico reveal">
+		<Triptico />
+		<figcaption>Sobreviver, comprar-se ou levantar-se — o mesmo peso, nenhuma escolha certa.</figcaption>
+	</figure>
+
+	<p class="dilema-micro reveal">Oito finais. Nenhum deles é neutro, e nenhuma partida mostra o jogo inteiro.</p>
+</section>
+
+<style>
+	.dilema {
+		max-width: 56rem;
+		margin-inline: auto;
+		padding: var(--space-3xl) var(--space-m);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2xl);
+	}
+
+	.dilema-intro {
+		max-width: 42ch;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-m);
+	}
+
+	.dilema-intro h2 {
+		font-size: var(--step-4);
+	}
+
+	.dilema-intro p {
+		font-size: var(--step-1);
+		color: var(--ink-muted);
+	}
+
+	.caminhos {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+		gap: var(--space-xl) var(--space-l);
+	}
+
+	.caminho {
+		border-top: 1px solid var(--line);
+		padding-top: var(--space-m);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2xs);
+	}
+
+	.caminho-number {
+		font-family: var(--font-display);
+		font-size: var(--step-1);
+		color: var(--line-strong);
+	}
+
+	.caminho h3 {
+		font-size: var(--step-2);
+		color: var(--highlight);
+	}
+
+	.caminho p {
+		color: var(--ink-muted);
+		font-size: var(--step-0);
+	}
+
+	.dilema-close {
+		max-width: 42ch;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-m);
+	}
+
+	.dilema-close p {
+		color: var(--ink-muted);
+		font-size: var(--step-1);
+	}
+
+	.dilema-thesis {
+		font-family: var(--font-display);
+		font-style: italic;
+		color: var(--highlight);
+		font-size: var(--step-3);
+	}
+
+	.dilema-triptico {
+		margin: 0;
+	}
+
+	.dilema-triptico figcaption {
+		margin-top: var(--space-s);
+		font-size: var(--step--1);
+		color: var(--ink-muted);
+		text-align: center;
+	}
+
+	.dilema-micro {
+		font-size: var(--step--1);
+		color: var(--ink-muted);
+		text-align: center;
+	}
+</style>

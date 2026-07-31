@@ -1,0 +1,198 @@
+---
+const pontos = [
+	{
+		titulo: 'Um produto que permanece',
+		texto:
+			'Diferente de um evento, um jogo não termina no dia seguinte. Ele fica disponível nas lojas, é jogado por anos, é citado, discutido, usado em sala de aula e redescoberto por públicos que ainda não existiam quando ele foi lançado. O investimento continua rendendo visibilidade depois de encerrado o contrato.',
+		icone: 'permanencia' as const,
+	},
+	{
+		titulo: 'Um público que fala',
+		texto:
+			'O segmento de jogos independentes narrativos é pequeno em número e desproporcionalmente ativo em discussão pública. É um público que escreve, grava, recomenda e leva o assunto para fora do próprio meio.',
+		icone: 'publico' as const,
+	},
+	{
+		titulo: 'Uma pauta que a imprensa cobre',
+		texto:
+			'Um jogo brasileiro sobre a Revolta dos Malês, feito com consultoria histórica e lançado em Salvador, é matéria em veículos de cultura, de educação, de história e de tecnologia ao mesmo tempo. São quatro editorias distintas para um único produto.',
+		icone: 'imprensa' as const,
+	},
+	{
+		titulo: 'Alcance real, não presumido',
+		texto:
+			'Construído para rodar em aparelhos de entrada, sem exigir conexão e sem custo de dados para jogar. A decisão técnica é também uma decisão de acesso, e ela amplia o público efetivamente alcançável no Brasil.',
+		icone: 'alcance' as const,
+	},
+];
+---
+
+<section class="patrocinio" aria-labelledby="patrocinio-heading">
+	<div class="patrocinio-inner">
+		<div class="patrocinio-intro">
+			<h2 id="patrocinio-heading" class="reveal">O que o seu patrocínio constrói.</h2>
+			<p class="reveal">
+				Patrocinar Ganhadeiras é colocar o nome da sua empresa em um produto cultural
+				brasileiro que trata de história negra com pesquisa, cuidado e ambição de qualidade
+				internacional.
+			</p>
+		</div>
+
+		<ol class="pontos">
+			{
+				pontos.map((p, i) => (
+					<li class="ponto reveal">
+						<svg class="ponto-icone" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+							{p.icone === 'permanencia' && (
+								<>
+									<line x1="6" y1="26" x2="26" y2="26" />
+									<rect x="8" y="10" width="4" height="16" />
+									<rect x="14" y="6" width="4" height="20" />
+									<rect x="20" y="14" width="4" height="12" />
+								</>
+							)}
+							{p.icone === 'publico' && (
+								<>
+									<path d="M6,10 h20 v12 h-11 l-5,5 v-5 h-4 z" />
+									<line x1="10" y1="15" x2="22" y2="15" />
+									<line x1="10" y1="19" x2="18" y2="19" />
+								</>
+							)}
+							{p.icone === 'imprensa' && (
+								<>
+									<rect x="6" y="8" width="20" height="17" />
+									<line x1="10" y1="13" x2="22" y2="13" />
+									<line x1="10" y1="17" x2="22" y2="17" />
+									<line x1="10" y1="21" x2="17" y2="21" />
+								</>
+							)}
+							{p.icone === 'alcance' && (
+								<>
+									<rect x="11" y="6" width="10" height="20" />
+									<line x1="14" y1="23" x2="18" y2="23" />
+									<path d="M8,13 C8,10 10,8 12,7" />
+									<path d="M24,13 C24,10 22,8 20,7" />
+								</>
+							)}
+						</svg>
+						<h3>{p.titulo}</h3>
+						<p>{p.texto}</p>
+					</li>
+				))
+			}
+		</ol>
+
+		<div class="patrocinio-cta reveal">
+			<a class="btn btn-primary" href="#convite">Receber o material completo do projeto</a>
+			<p class="patrocinio-micro">
+				Enviamos o game design document, o plano de produção, o cronograma e a proposta de
+				contrapartidas.
+			</p>
+		</div>
+	</div>
+</section>
+
+<style>
+	.patrocinio {
+		background: var(--surface);
+		border-block: 1px solid var(--line);
+	}
+
+	.patrocinio-inner {
+		max-width: 60rem;
+		margin-inline: auto;
+		padding: var(--space-3xl) var(--space-m);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2xl);
+	}
+
+	.patrocinio-intro {
+		max-width: 42ch;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-m);
+	}
+
+	.patrocinio-intro h2 {
+		font-size: var(--step-4);
+	}
+
+	.patrocinio-intro p {
+		font-size: var(--step-1);
+		color: var(--ink-muted);
+	}
+
+	.pontos {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+		gap: var(--space-xl) var(--space-l);
+	}
+
+	.ponto {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-xs);
+		padding-top: var(--space-m);
+		border-top: 1px solid var(--line);
+	}
+
+	.ponto-icone {
+		width: 2rem;
+		height: 2rem;
+		color: var(--highlight);
+		margin-bottom: var(--space-2xs);
+	}
+
+	.ponto h3 {
+		font-family: var(--font-body);
+		font-weight: 600;
+		font-size: var(--step-0);
+		color: var(--ink);
+	}
+
+	.ponto p {
+		font-size: var(--step--1);
+		color: var(--ink-muted);
+	}
+
+	.patrocinio-cta {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-s);
+		padding-top: var(--space-m);
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		padding: var(--space-xs) var(--space-l);
+		font-family: var(--font-body);
+		font-weight: 600;
+		font-size: var(--step-0);
+		text-decoration: none;
+		border: 1.5px solid var(--highlight);
+		background: var(--highlight);
+		color: var(--bg);
+		transition: transform 0.3s var(--ease-out-quart);
+	}
+
+	.btn:hover {
+		transform: translateY(-2px);
+	}
+
+	.patrocinio-micro {
+		font-size: var(--step--1);
+		color: var(--ink-muted);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.btn {
+			transition: none;
+		}
+	}
+</style>

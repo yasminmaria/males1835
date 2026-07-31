@@ -1,0 +1,123 @@
+---
+import Arquivo from '../motifs/Arquivo.astro';
+---
+
+<section class="historia" aria-labelledby="historia-heading">
+	<div class="historia-text">
+		<h2 id="historia-heading" class="reveal">A pesquisa não é enfeite. É o alicerce.</h2>
+
+		<p class="reveal">
+			A Revolta dos Malês é um dos eventos mais bem documentados da história da escravidão no
+			Brasil, e um dos menos representados na cultura popular. Os autos do processo que
+			julgou os revoltosos sobreviveram, e é por eles que se sabe quem eram aquelas pessoas, o
+			que liam, em que acreditavam e como se organizaram.
+		</p>
+
+		<p class="reveal">
+			O jogo é construído sobre essa documentação, com consultoria histórica contratada e
+			revisão por pesquisadores da área.
+		</p>
+
+		<h3 class="reveal">Personagens que existiram aparecem com seus nomes.</h3>
+
+		<p class="reveal">
+			Pacífico Licutan, o alufá preso na cadeia da Câmara, que a rede considerou resgatar.
+			Sabina da Cruz, cujo nome aparece nos autos entre as pessoas que falaram com as
+			autoridades. Luísa Mahin, figura de quem a tradição oral guarda muito e o documento
+			guarda pouco, e cuja própria existência é objeto de disputa entre historiadores.
+		</p>
+
+		<p class="reveal">
+			O jogo apresenta cada um deles com o estatuto que a história lhes dá. Em qualquer momento
+			da partida, o jogador pode abrir as notas e ler o que é documento, o que é interpretação
+			e o que é invenção nossa.
+		</p>
+
+		<h3 class="reveal">E há um compromisso anterior a todos os outros.</h3>
+
+		<p class="reveal">
+			O jogo representa um sistema que tratava pessoas como recurso, sem adotar esse olhar.
+			Comer, dormir, rezar e cuidar de quem se ama têm peso mecânico igual ao de vender bem.
+			Quando o jogador sacrifica o descanso de Benedita para lucrar mais, o jogo cobra, e o
+			resumo daquela noite diz exatamente o que foi feito.
+		</p>
+
+		<p class="reveal historia-beat">
+			A violência do período está no jogo e não é suavizada. Ela é dita, e não exibida.
+		</p>
+
+		<p class="reveal historia-micro">
+			Referências principais: João José Reis, <em>Rebelião escrava no Brasil</em> (2003) ·
+			Cecília Moreira Soares, <em>As ganhadeiras</em> (1996) · Maria Inês Côrtes de Oliveira,
+			<em>O liberto</em> (1988)
+		</p>
+	</div>
+
+	<div class="historia-arquivo reveal">
+		<Arquivo />
+	</div>
+</section>
+
+<style>
+	.historia {
+		max-width: 68rem;
+		margin-inline: auto;
+		padding: var(--space-3xl) var(--space-m);
+		display: grid;
+		grid-template-columns: 1fr minmax(14rem, 18rem);
+		gap: var(--space-2xl);
+		align-items: start;
+	}
+
+	.historia-text {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-m);
+		max-width: 48ch;
+	}
+
+	.historia-text h2 {
+		font-size: var(--step-4);
+	}
+
+	.historia-text p {
+		font-size: var(--step-1);
+		color: var(--ink-muted);
+	}
+
+	.historia-text h3 {
+		font-size: var(--step-2);
+		color: var(--highlight);
+		margin-top: var(--space-s);
+	}
+
+	.historia-beat {
+		font-family: var(--font-display);
+		font-style: italic;
+		color: var(--ink);
+	}
+
+	.historia-micro {
+		font-size: var(--step--1);
+		color: var(--ink-muted);
+		padding-top: var(--space-m);
+		border-top: 1px solid var(--line);
+	}
+
+	.historia-arquivo {
+		position: sticky;
+		top: var(--space-xl);
+	}
+
+	@media (max-width: 56rem) {
+		.historia {
+			grid-template-columns: 1fr;
+		}
+
+		.historia-arquivo {
+			position: static;
+			width: min(60vw, 14rem);
+			margin-inline: auto;
+		}
+	}
+</style>

@@ -1,0 +1,66 @@
+---
+import PainelRegioes from '../motifs/PainelRegioes.astro';
+---
+
+<section class="cidade" aria-labelledby="cidade-heading">
+	<div class="cidade-intro">
+		<h2 id="cidade-heading" class="reveal">Sete lugares, e cada um deles te olha de um jeito.</h2>
+
+		<p class="reveal">
+			Salvador não é um cenário de fundo. É o sistema de risco do jogo, desenhado como mapa.
+		</p>
+
+		<p class="reveal">
+			Em Água de Meninos, no meio do mercado de peixe, ninguém repara em mais uma mulher com
+			um tabuleiro. Na Vitória, entre os sobrados dos senhores, o lucro é alto e a sua
+			presença é uma pergunta que alguém vai fazer.
+		</p>
+
+		<p class="reveal">
+			O Pelourinho tem a cadeia onde está preso o homem que a rede precisa alcançar. A
+			Barroquinha tem as casas onde a conspiração respira, e por isso mesmo tem patrulha em
+			alerta.
+		</p>
+
+		<h3 class="reveal">
+			Os lugares onde estão as pessoas que te ajudam são os mais perigosos do mapa. Todos os
+			dias.
+		</h3>
+	</div>
+
+	<PainelRegioes />
+</section>
+
+<style>
+	.cidade {
+		max-width: 68rem;
+		margin-inline: auto;
+		padding: var(--space-3xl) var(--space-m);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2xl);
+	}
+
+	.cidade-intro {
+		max-width: 46ch;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-m);
+	}
+
+	.cidade-intro h2 {
+		font-size: var(--step-4);
+	}
+
+	.cidade-intro p {
+		font-size: var(--step-1);
+		color: var(--ink-muted);
+	}
+
+	.cidade-intro h3 {
+		font-size: var(--step-2);
+		color: var(--highlight);
+		margin-top: var(--space-s);
+		max-width: 28ch;
+	}
+</style>

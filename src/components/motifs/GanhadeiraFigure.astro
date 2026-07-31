@@ -1,0 +1,83 @@
+---
+interface Props {
+	class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+
+/*
+  Silhueta sólida de perfil, no registro de estêncil/talha de xilogravura
+  (forma cheia, não contorno) — mais legível que uma figura frontal
+  simétrica, que tende a se fundir visualmente com o tabuleiro. As linhas
+  finas na saia são "entalhadas" na cor do fundo, como o sulco de uma
+  goiva na madeira.
+*/
+const bodyOutline =
+	'100,40 118,46 124,58 118,66 114,72 108,80 112,96 118,140 145,250 150,312 55,312 58,250 68,140 66,96 72,70 74,50 85,40';
+
+const gougeLines = [
+	{ x1: 78, y1: 150, x2: 68, y2: 300 },
+	{ x1: 92, y1: 148, x2: 86, y2: 302 },
+	{ x1: 108, y1: 148, x2: 112, y2: 302 },
+	{ x1: 124, y1: 150, x2: 132, y2: 300 },
+];
+
+const pedestalCols = 11;
+const pedestalW = 12;
+const pedestalStartX = 100 - (pedestalCols * pedestalW) / 2;
+const pedestalY = 322;
+---
+
+<svg
+	class={`motif-figure ${className}`}
+	viewBox="0 0 200 344"
+	fill="none"
+	role="img"
+	aria-labelledby="figure-title"
+	data-motif-draw
+>
+	<title id="figure-title">Silhueta de uma ganhadeira de perfil, com o tabuleiro equilibrado na cabeça</title>
+
+	<!-- corpo: silhueta sólida -->
+	<polygon points={bodyOutline} fill="currentColor" />
+
+	<!-- braço apoiado na cintura -->
+	<polygon points="68,140 54,158 64,180 72,160" fill="currentColor" />
+
+	<!-- tabuleiro -->
+	<ellipse cx="103" cy="35" rx="46" ry="8" fill="currentColor" />
+
+	<!-- goivas: linhas entalhadas na saia, cor do fundo -->
+	<g stroke="var(--bg)" stroke-width="2.5" stroke-linecap="round">
+		{gougeLines.map((l) => <line x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2} />)}
+	</g>
+
+	<!-- pedestal -->
+	<g>
+		{
+			Array.from({ length: pedestalCols }, (_, col) => {
+				const filled = col % 2 === 0;
+				return (
+					<rect
+						x={pedestalStartX + col * pedestalW}
+						y={pedestalY}
+						width={pedestalW}
+						height={pedestalW}
+						fill={filled ? 'currentColor' : 'none'}
+						stroke="currentColor"
+						stroke-width="1.5"
+					/>
+				);
+			})
+		}
+	</g>
+</svg>
+
+<style>
+	.motif-figure {
+		color: var(--highlight);
+		width: 100%;
+		height: auto;
+		overflow: visible;
+	}
+</style>

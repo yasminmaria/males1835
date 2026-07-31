@@ -1,0 +1,181 @@
+---
+import PhoneMockup from '../motifs/PhoneMockup.astro';
+
+const escopo = [
+	{ label: 'Plataformas', valor: 'Android e iOS' },
+	{ label: 'Duração de uma partida', valor: '20 a 40 minutos' },
+	{ label: 'Dias de jogo', valor: 'Até 12' },
+	{ label: 'Regiões navegáveis', valor: '7' },
+	{ label: 'Personagens com sistema próprio', valor: '6' },
+	{ label: 'Finais', valor: '8' },
+	{ label: 'Idiomas no lançamento', valor: 'Português, inglês e espanhol' },
+	{ label: 'Conexão', valor: 'Dispensável. O jogo roda offline do início ao fim' },
+];
+---
+
+<section class="construimos" aria-labelledby="construimos-heading">
+	<div class="construimos-intro">
+		<h2 id="construimos-heading" class="reveal">Um jogo pequeno, denso e terminável.</h2>
+		<p class="reveal">
+			Feito para celular, em retrato, jogável com uma mão. Uma partida inteira leva de vinte a
+			quarenta minutos e cabe em um trajeto de ônibus. Não há reflexo, não há precisão de
+			toque, não há conexão necessária. Ele funciona no aparelho que a maior parte do Brasil
+			tem no bolso.
+		</p>
+	</div>
+
+	<figure class="construimos-mockups reveal">
+		<PhoneMockup />
+		<figcaption>Visão conceitual das telas — montagem do tabuleiro, mapa de risco e diálogo.</figcaption>
+	</figure>
+
+	<div class="construimos-block reveal">
+		<h3>O escopo</h3>
+		<table class="escopo-table">
+			<tbody>
+				{
+					escopo.map((row) => (
+						<tr>
+							<th scope="row">{row.label}</th>
+							<td>{row.valor}</td>
+						</tr>
+					))
+				}
+			</tbody>
+		</table>
+	</div>
+
+	<div class="construimos-block reveal">
+		<h3>Acessibilidade desde a primeira linha de código</h3>
+		<p>
+			Compatibilidade com leitores de tela, quatro níveis de escala tipográfica, modo de alto
+			contraste, paletas para as três formas de daltonismo, legendas para tudo que é falado ou
+			cantado, e nenhuma informação transmitida só por cor. O jogo é por turnos, então ninguém
+			fica de fora por tempo de reação.
+		</p>
+		<p>Um glossário permanente explica cada termo histórico, religioso e regional, acessível de qualquer tela.</p>
+	</div>
+
+	<div class="construimos-block reveal">
+		<h3>E ele chega às pessoas</h3>
+		<p>
+			Lançamento presencial em Salvador, aberto ao público, com sessões jogáveis e conversa
+			com a equipe e com a consultoria histórica do projeto. Participação em ao menos uma das
+			grandes feiras brasileiras do setor. Sessões abertas em equipamentos culturais da cidade
+			durante a produção, funcionando como teste e como devolutiva para a cidade que o jogo
+			retrata.
+		</p>
+	</div>
+</section>
+
+<style>
+	.construimos {
+		max-width: 52rem;
+		margin-inline: auto;
+		padding: var(--space-3xl) var(--space-m);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2xl);
+	}
+
+	.construimos-intro {
+		max-width: 46ch;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-m);
+	}
+
+	.construimos-intro h2 {
+		font-size: var(--step-4);
+	}
+
+	.construimos-intro p {
+		font-size: var(--step-1);
+		color: var(--ink-muted);
+	}
+
+	.construimos-mockups {
+		margin: 0;
+	}
+
+	.construimos-mockups figcaption {
+		margin-top: var(--space-s);
+		font-size: var(--step--1);
+		color: var(--ink-muted);
+		text-align: center;
+	}
+
+	.construimos-block {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-s);
+	}
+
+	.construimos-block h3 {
+		font-size: var(--step-2);
+		color: var(--highlight);
+	}
+
+	.construimos-block p {
+		color: var(--ink-muted);
+		font-size: var(--step-0);
+		max-width: 58ch;
+	}
+
+	.escopo-table {
+		border-collapse: collapse;
+		width: 100%;
+		font-size: var(--step-0);
+	}
+
+	.escopo-table tr {
+		border-top: 1px solid var(--line);
+	}
+
+	.escopo-table tr:last-child {
+		border-bottom: 1px solid var(--line);
+	}
+
+	.escopo-table th,
+	.escopo-table td {
+		text-align: left;
+		padding: var(--space-s) 0;
+		font-weight: 400;
+	}
+
+	.escopo-table th {
+		color: var(--ink-muted);
+		width: 45%;
+		padding-right: var(--space-m);
+	}
+
+	.escopo-table td {
+		color: var(--ink);
+	}
+
+	@media (max-width: 32rem) {
+		.escopo-table,
+		.escopo-table tbody,
+		.escopo-table tr,
+		.escopo-table th,
+		.escopo-table td {
+			display: block;
+			width: auto;
+		}
+
+		.escopo-table tr {
+			padding-block: var(--space-2xs);
+		}
+
+		.escopo-table th {
+			padding: 0;
+			font-size: var(--step--1);
+			letter-spacing: 0.02em;
+			text-transform: uppercase;
+		}
+
+		.escopo-table td {
+			padding: 0 0 var(--space-2xs);
+		}
+	}
+</style>

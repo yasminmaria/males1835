@@ -1,0 +1,40 @@
+---
+interface Props {
+	class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+
+const lines = Array.from({ length: 9 }, (_, i) => {
+	const y = 14 + i * 15;
+	const width = 60 + ((i * 37) % 90);
+	return { y, width };
+});
+---
+
+<svg
+	class={`motif-arquivo ${className}`}
+	viewBox="0 0 180 150"
+	fill="none"
+	role="img"
+	aria-label="Textura de manuscrito histórico com selo, representação abstrata dos autos do processo"
+	data-motif-draw
+>
+	<rect x="4" y="4" width="172" height="142" stroke="var(--line-strong)" stroke-width="1.5" />
+	<g stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.85">
+		{lines.map((l) => (
+			<path d={`M16,${l.y} q10,-4 20,0 t20,0 t20,0 t20,0`} style={`--w:${l.width}`} />
+		))}
+	</g>
+	<circle cx="146" cy="118" r="20" stroke="currentColor" stroke-width="2" />
+	<circle cx="146" cy="118" r="12" stroke="currentColor" stroke-width="1.2" />
+</svg>
+
+<style>
+	.motif-arquivo {
+		color: var(--ink-muted);
+		width: 100%;
+		height: auto;
+		overflow: visible;
+	}
+</style>

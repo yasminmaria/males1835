@@ -1,0 +1,79 @@
+---
+interface Props {
+	class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<svg
+	class={`motif-triptico ${className}`}
+	viewBox="0 0 600 260"
+	fill="none"
+	role="img"
+	aria-labelledby="triptico-title"
+	data-motif-draw
+>
+	<title id="triptico-title">
+		Três painéis com o mesmo peso visual: moedas contadas sobre um pano, um pote de barro
+		enterrado e um maço de cartas amarrado com barbante
+	</title>
+
+	<line x1="200" y1="16" x2="200" y2="244" stroke="var(--line)" stroke-width="1.5" />
+	<line x1="400" y1="16" x2="400" y2="244" stroke="var(--line)" stroke-width="1.5" />
+
+	<!-- painel 1: moedas contadas sobre um pano -->
+	<g>
+		<polygon points="30,210 170,210 184,236 16,236" fill="var(--surface-2)" stroke="var(--line-strong)" stroke-width="1.5" />
+		{
+			[0, 1, 2, 3, 4].map((i) => (
+				<circle cx={62 + i * 20} cy={150 - (i % 2) * 8} r="16" fill="currentColor" />
+			))
+		}
+		<circle cx="82" cy="118" r="16" fill="currentColor" />
+		<circle cx="102" cy="126" r="16" fill="currentColor" />
+		<g stroke="var(--bg)" stroke-width="1.5">
+			<line x1="55" y1="150" x2="69" y2="150" />
+			<line x1="75" y1="142" x2="89" y2="142" />
+			<line x1="95" y1="150" x2="109" y2="150" />
+		</g>
+	</g>
+
+	<!-- painel 2: pote de barro enterrado, entreaberto -->
+	<g>
+		<path d="M216,224 C216,208 260,200 300,200 C340,200 384,208 384,224 L384,236 L216,236 Z" fill="var(--surface-2)" stroke="var(--line-strong)" stroke-width="1.5" />
+		<path
+			d="M266,224 C260,190 264,150 280,126 C286,118 314,118 320,126 C336,150 340,190 334,224 Z"
+			fill="currentColor"
+		/>
+		<ellipse cx="300" cy="126" rx="24" ry="9" fill="currentColor" />
+		<ellipse cx="292" cy="120" rx="16" ry="6" fill="var(--bg)" />
+		<circle cx="288" cy="120" r="5" fill="currentColor" />
+		<circle cx="300" cy="117" r="5" fill="currentColor" />
+	</g>
+
+	<!-- painel 3: maço de cartas amarrado com barbante -->
+	<g>
+		<rect x="466" y="150" width="70" height="16" fill="currentColor" />
+		<rect x="470" y="134" width="70" height="16" fill="currentColor" />
+		<rect x="462" y="118" width="70" height="16" fill="currentColor" />
+		<g stroke="var(--bg)" stroke-width="2" stroke-linecap="round">
+			<path d="M472,120 C478,116 484,116 488,120" />
+			<path d="M494,122 C498,118 504,120 506,124" />
+			<circle cx="514" cy="120" r="2" fill="var(--bg)" stroke="none" />
+		</g>
+		<g stroke="var(--bg)" stroke-width="3" stroke-linecap="round">
+			<line x1="480" y1="112" x2="500" y2="172" />
+			<line x1="518" y1="112" x2="498" y2="172" />
+		</g>
+	</g>
+</svg>
+
+<style>
+	.motif-triptico {
+		color: var(--highlight);
+		width: 100%;
+		height: auto;
+		overflow: visible;
+	}
+</style>

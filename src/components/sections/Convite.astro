@@ -1,0 +1,405 @@
+---
+import GanhadeiraFigure from '../motifs/GanhadeiraFigure.astro';
+
+// CONTATO_EMAIL é um placeholder — troque pelo e-mail real antes de publicar.
+const CONTATO_EMAIL = 'contato@ganhadeirasjogo.com.br';
+---
+
+<section class="convite" id="convite" aria-labelledby="convite-heading">
+	<div class="convite-figure reveal" data-figure aria-hidden="true">
+		<span class="convite-glow"></span>
+		<GanhadeiraFigure />
+	</div>
+
+	<div class="convite-intro reveal">
+		<h2 id="convite-heading">Ninguém escreveu o nome delas.</h2>
+		<p>
+			Mas elas atravessaram a cidade todos os dias, com o sustento na cabeça e o resto
+			embaixo, e a história aconteceu porque alguém a carregou até lá.
+		</p>
+		<p class="convite-thesis">
+			Este jogo é sobre estar dentro de um acontecimento que ninguém registrou que você
+			estava.
+		</p>
+	</div>
+
+	<div class="convite-ctas reveal">
+		<a class="btn btn-primary" href="#pitch-form">Quero apoiar o projeto</a>
+		<a class="btn btn-secondary" href="#pitch-form">Quero participar</a>
+	</div>
+
+	<form
+		class="pitch-form reveal"
+		id="pitch-form"
+		action={`mailto:${CONTATO_EMAIL}`}
+		method="get"
+		enctype="text/plain"
+		novalidate
+	>
+		<div class="field">
+			<label for="nome">Nome</label>
+			<input type="text" id="nome" name="nome" autocomplete="name" required />
+			<p class="field-error" data-error-for="nome" role="alert"></p>
+		</div>
+
+		<div class="field">
+			<label for="email">E-mail</label>
+			<input type="email" id="email" name="email" autocomplete="email" required />
+			<p class="field-error" data-error-for="email" role="alert"></p>
+		</div>
+
+		<div class="field">
+			<label for="organizacao">Organização <span class="field-optional">(opcional)</span></label>
+			<input type="text" id="organizacao" name="organizacao" autocomplete="organization" />
+		</div>
+
+		<div class="field">
+			<label for="mensagem">Mensagem <span class="field-optional">(opcional)</span></label>
+			<textarea id="mensagem" name="mensagem" rows="3"></textarea>
+		</div>
+
+		<button type="submit" class="submit-btn">
+			<span class="submit-btn-label">Solicitar material completo</span>
+		</button>
+
+		<p class="form-status" role="status" aria-live="polite" data-form-status></p>
+	</form>
+
+	<div class="convite-contato reveal">
+		<h3>Contato</h3>
+		<p class="contato-linha contato-placeholder">
+			<span aria-hidden="true">［ </span>nome do estúdio ou proponente, a confirmar<span aria-hidden="true"> ］</span>
+		</p>
+		<p class="contato-linha">Produção executiva: Yasmin</p>
+		<p class="contato-linha contato-placeholder">
+			<span aria-hidden="true">［ </span>e-mail, telefone e cidade de contato, em breve<span aria-hidden="true"> ］</span>
+		</p>
+		<p class="contato-linha contato-placeholder">
+			<span aria-hidden="true">［ </span>redes sociais e link para o GDD, mediante contato<span aria-hidden="true"> ］</span>
+		</p>
+	</div>
+
+	<p class="convite-legal reveal">
+		Ganhadeiras é um projeto de jogo eletrônico em desenvolvimento. Benedita é uma personagem
+		de ficção. Os fatos históricos representados são documentados e as fontes estão listadas
+		no material completo do projeto.
+	</p>
+</section>
+
+<style>
+	.convite {
+		max-width: 36rem;
+		margin-inline: auto;
+		padding: var(--space-3xl) var(--space-m) var(--space-2xl);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		position: relative;
+	}
+
+	.convite-figure {
+		position: relative;
+		width: min(46vw, 12rem);
+		margin-bottom: var(--space-l);
+	}
+
+	.convite-glow {
+		position: absolute;
+		bottom: 8%;
+		right: -6%;
+		width: 46%;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		background: radial-gradient(circle, var(--highlight) 0%, transparent 72%);
+		opacity: 0.4;
+		filter: blur(8px);
+		pointer-events: none;
+	}
+
+	.convite-intro {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-m);
+		margin-bottom: var(--space-l);
+	}
+
+	.convite-intro h2 {
+		font-size: var(--step-4);
+	}
+
+	.convite-intro p {
+		color: var(--ink-muted);
+		font-size: var(--step-1);
+		max-width: 42ch;
+		margin-inline: auto;
+	}
+
+	.convite-thesis {
+		font-family: var(--font-display);
+		font-style: italic;
+		color: var(--highlight);
+		font-size: var(--step-2);
+	}
+
+	.convite-ctas {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: var(--space-s);
+		margin-bottom: var(--space-2xl);
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		padding: var(--space-xs) var(--space-l);
+		font-family: var(--font-body);
+		font-weight: 600;
+		font-size: var(--step-0);
+		text-decoration: none;
+		border: 1.5px solid var(--highlight);
+		transition: transform 0.3s var(--ease-out-quart), background 0.3s var(--ease-out-quart), color 0.3s var(--ease-out-quart);
+	}
+
+	.btn-primary {
+		background: var(--highlight);
+		color: var(--bg);
+	}
+
+	.btn-secondary {
+		background: transparent;
+		color: var(--highlight);
+	}
+
+	.btn:hover {
+		transform: translateY(-2px);
+	}
+
+	.pitch-form {
+		width: 100%;
+		text-align: left;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-m);
+		scroll-margin-top: var(--space-xl);
+	}
+
+	.field {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3xs);
+	}
+
+	.field label {
+		font-size: var(--step--1);
+		letter-spacing: 0.02em;
+		color: var(--ink-muted);
+	}
+
+	.field-optional {
+		opacity: 0.75;
+	}
+
+	.field input,
+	.field textarea {
+		background: var(--surface);
+		border: 1px solid var(--line-strong);
+		color: var(--ink);
+		padding: var(--space-xs) var(--space-s);
+		font-family: var(--font-body);
+		font-size: var(--step-0);
+		border-radius: 0;
+		resize: vertical;
+	}
+
+	.field input:focus-visible,
+	.field textarea:focus-visible {
+		outline: 2px solid var(--highlight);
+		outline-offset: 2px;
+		border-color: var(--highlight);
+	}
+
+	.field input[aria-invalid='true'],
+	.field textarea[aria-invalid='true'] {
+		border-color: var(--highlight);
+	}
+
+	.field-error {
+		margin: 0;
+		font-size: var(--step--1);
+		color: var(--ink);
+		min-height: 1.2em;
+	}
+
+	.field-error:empty {
+		display: none;
+	}
+
+	.submit-btn {
+		margin-top: var(--space-xs);
+		background: var(--highlight);
+		color: var(--bg);
+		border: none;
+		padding: var(--space-s) var(--space-l);
+		font-family: var(--font-body);
+		font-weight: 600;
+		font-size: var(--step-0);
+		letter-spacing: 0.02em;
+		cursor: pointer;
+		align-self: flex-start;
+		transition: transform 0.3s var(--ease-out-quart);
+	}
+
+	.submit-btn:hover {
+		transform: translateY(-2px);
+	}
+
+	.submit-btn:active {
+		transform: translateY(0);
+	}
+
+	.submit-btn:disabled {
+		opacity: 0.6;
+		cursor: progress;
+		transform: none;
+	}
+
+	.form-status {
+		margin: 0;
+		font-size: var(--step-0);
+		color: var(--ink-muted);
+		min-height: 1.4em;
+	}
+
+	.form-status[data-state='success'] {
+		color: var(--highlight);
+		font-family: var(--font-display);
+		font-style: italic;
+		font-size: var(--step-1);
+	}
+
+	.convite-contato {
+		width: 100%;
+		text-align: left;
+		margin-top: var(--space-2xl);
+		padding-top: var(--space-l);
+		border-top: 1px solid var(--line);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2xs);
+	}
+
+	.convite-contato h3 {
+		font-size: var(--step-0);
+		font-family: var(--font-body);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		color: var(--ink-muted);
+		margin-bottom: var(--space-xs);
+	}
+
+	.contato-linha {
+		font-size: var(--step-0);
+		color: var(--ink);
+	}
+
+	.contato-placeholder {
+		font-family: var(--font-display);
+		font-style: italic;
+		color: var(--ink-muted);
+	}
+
+	.convite-legal {
+		margin-top: var(--space-xl);
+		font-size: var(--step--1);
+		color: var(--ink-muted);
+		max-width: 46ch;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.btn,
+		.submit-btn {
+			transition: none;
+		}
+	}
+</style>
+
+<script>
+	const form = document.getElementById('pitch-form') as HTMLFormElement | null;
+	if (form) {
+		const status = form.querySelector('[data-form-status]') as HTMLElement;
+		const submitBtn = form.querySelector('.submit-btn') as HTMLButtonElement;
+		const action = form.getAttribute('action') ?? '';
+
+		const fields = {
+			nome: form.querySelector('#nome') as HTMLInputElement,
+			email: form.querySelector('#email') as HTMLInputElement,
+		};
+
+		function setError(name: 'nome' | 'email', message: string) {
+			const el = form?.querySelector(`[data-error-for="${name}"]`);
+			if (el) el.textContent = message;
+			fields[name].setAttribute('aria-invalid', message ? 'true' : 'false');
+		}
+
+		function validate(): boolean {
+			let valid = true;
+			if (!fields.nome.value.trim()) {
+				setError('nome', 'Conta seu nome pra gente saber com quem está falando.');
+				valid = false;
+			} else {
+				setError('nome', '');
+			}
+
+			const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			if (!emailPattern.test(fields.email.value.trim())) {
+				setError('email', 'Precisamos de um e-mail válido pra enviar o material.');
+				valid = false;
+			} else {
+				setError('email', '');
+			}
+
+			return valid;
+		}
+
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+			if (!validate()) {
+				status.textContent = 'Confira os campos marcados antes de enviar.';
+				status.removeAttribute('data-state');
+				return;
+			}
+
+			submitBtn.disabled = true;
+			status.textContent = 'Abrindo seu e-mail...';
+			status.removeAttribute('data-state');
+
+			const data = new FormData(form);
+			const subject = encodeURIComponent('Pedido de material — Ganhadeiras');
+			const body = encodeURIComponent(
+				`Nome: ${data.get('nome')}\n` +
+					`E-mail: ${data.get('email')}\n` +
+					`Organização: ${data.get('organizacao') || '—'}\n\n` +
+					`Mensagem:\n${data.get('mensagem') || '—'}`
+			);
+
+			window.location.href = `${action}?subject=${subject}&body=${body}`;
+
+			window.setTimeout(() => {
+				submitBtn.disabled = false;
+				status.textContent = 'Se o seu e-mail não abriu, aguarde o canal direto de contato ao lado.';
+				status.setAttribute('data-state', 'success');
+			}, 900);
+		});
+
+		fields.nome.addEventListener('blur', () => {
+			if (fields.nome.value.trim()) setError('nome', '');
+		});
+		fields.email.addEventListener('blur', () => {
+			const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			if (emailPattern.test(fields.email.value.trim())) setError('email', '');
+		});
+	}
+</script>

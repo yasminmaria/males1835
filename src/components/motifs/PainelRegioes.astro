@@ -1,0 +1,57 @@
+---
+import Glyph from './Glyph.astro';
+import { regioes } from '../../data/regioes';
+---
+
+<ol class="painel-regioes">
+	{
+		regioes.map((regiao, i) => (
+			<li class="regiao reveal" style={`--i:${i}`}>
+				<Glyph name={regiao.id} label={regiao.nome} class="regiao-sigilo" />
+				<h3>{regiao.nome}</h3>
+				<p>{regiao.cena}</p>
+			</li>
+		))
+	}
+</ol>
+
+<style>
+	.painel-regioes {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+		gap: 0;
+		border-top: 1px solid var(--line);
+		border-left: 1px solid var(--line);
+	}
+
+	.regiao {
+		padding: var(--space-l) var(--space-m);
+		border-right: 1px solid var(--line);
+		border-bottom: 1px solid var(--line);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-s);
+	}
+
+	.regiao :global(.regiao-sigilo) {
+		width: 2rem;
+		height: 2rem;
+		color: var(--highlight);
+	}
+
+	.regiao h3 {
+		font-family: var(--font-body);
+		font-weight: 600;
+		font-size: var(--step-0);
+		letter-spacing: 0.01em;
+		color: var(--ink);
+	}
+
+	.regiao p {
+		font-size: var(--step--1);
+		color: var(--ink-muted);
+	}
+</style>

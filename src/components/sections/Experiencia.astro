@@ -1,0 +1,153 @@
+---
+import Board from '../motifs/Board.astro';
+import Confronto from '../motifs/Confronto.astro';
+---
+
+<section class="experiencia" aria-labelledby="experiencia-heading">
+	<div class="experiencia-intro">
+		<h2 id="experiencia-heading" class="reveal">
+			Um dia leva quatro minutos. Você vai querer ter feito diferente.
+		</h2>
+		<p class="reveal">Você acorda às quatro da manhã e decide o que vai carregar.</p>
+	</div>
+
+	<figure class="experiencia-board reveal">
+		<Board />
+		<figcaption>A montagem do tabuleiro — dez espaços, cada escolha ocupa o seu.</figcaption>
+	</figure>
+
+	<div class="experiencia-body">
+		<p class="reveal">
+			O tabuleiro tem dez espaços. O acarajé ocupa dois e dá o melhor lucro na Vitória, que é
+			o bairro dos brancos ricos, onde uma negra parada na rua já é motivo de pergunta. A
+			pomada de ervas ocupa um espaço só e vende caro, mas só em dois lugares, e é a única
+			coisa que cura você quando apanha.
+		</p>
+
+		<p class="reveal">
+			Se você aceitou levar alguma coisa para a rede, ela também ocupa espaço. Uma carta cabe
+			em um. Uma lâmina, em dois. Pólvora, em três.
+		</p>
+
+		<p class="reveal">
+			Você sai antes do sol. Cada travessia entre um bairro e outro leva meia hora e a cidade
+			responde de um jeito diferente a cada uma delas. O jogo mostra o risco antes de você
+			confirmar, sempre, porque Benedita saberia. E mostra também o risco acumulado do caminho
+			inteiro, porque três travessias de trinta por cento não são trinta por cento.
+		</p>
+
+		<h3 class="reveal">Você aprende a se esconder mostrando mais.</h3>
+
+		<p class="reveal">
+			Se te pararem, o que salva não é o que você escondeu bem. É o quanto o tabuleiro parece
+			o tabuleiro de uma mulher que só está trabalhando. Quanto mais mercadoria de verdade por
+			cima, menor a chance de alguém olhar embaixo.
+		</p>
+
+		<p class="reveal experiencia-beat">Era assim que elas faziam.</p>
+	</div>
+
+	<figure class="experiencia-confronto reveal">
+		<Confronto />
+	</figure>
+
+	<div class="experiencia-body">
+		<h3 class="reveal">E então são seis horas.</h3>
+
+		<p class="reveal">O feitor aparece onde você estiver. Se faltar moeda, o corpo paga a diferença.</p>
+
+		<p class="reveal">
+			Depois das seis, a cidade fica duas vezes mais perigosa. Depois das oito, duas vezes e
+			meia, e circular passa a exigir papel, coragem ou uma rota que só alguém muito antigo
+			poderia ter te ensinado.
+		</p>
+
+		<p class="reveal">
+			É de noite que acontecem as entregas que valem alguma coisa. Também é de noite que o
+			corpo se gasta.
+		</p>
+
+		<p class="reveal experiencia-micro">
+			Dormir cedo devolve saúde e ânimo. Virar a noite cobra dos dois no dia seguinte. Não
+			existe versão dessa história em que sair à noite sai barato.
+		</p>
+	</div>
+</section>
+
+<style>
+	.experiencia {
+		max-width: 44rem;
+		margin-inline: auto;
+		padding: var(--space-3xl) var(--space-m);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-xl);
+	}
+
+	.experiencia-intro h2 {
+		font-size: var(--step-4);
+		margin-bottom: var(--space-m);
+	}
+
+	.experiencia-intro p,
+	.experiencia-body p {
+		font-size: var(--step-1);
+		color: var(--ink-muted);
+	}
+
+	.experiencia-body {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-m);
+	}
+
+	.experiencia-body h3 {
+		font-size: var(--step-2);
+		color: var(--highlight);
+		margin-top: var(--space-s);
+	}
+
+	.experiencia-beat {
+		font-family: var(--font-display);
+		font-style: italic;
+		color: var(--ink);
+		font-size: var(--step-2);
+	}
+
+	.experiencia-micro {
+		font-size: var(--step-0);
+		color: var(--ink-muted);
+		padding-top: var(--space-m);
+		border-top: 1px dashed var(--line-strong);
+	}
+
+	.experiencia-board {
+		margin: 0;
+		background: var(--surface);
+		padding: var(--space-l);
+		border: 1px solid var(--line);
+	}
+
+	.experiencia-board figcaption {
+		margin-top: var(--space-s);
+		font-size: var(--step--1);
+		color: var(--ink-muted);
+		text-align: center;
+	}
+
+	.experiencia-confronto {
+		margin: 0 calc(var(--space-m) * -1);
+		max-width: 26rem;
+		margin-inline: auto;
+	}
+
+	@media (min-width: 52rem) {
+		.experiencia {
+			max-width: 52rem;
+		}
+
+		.experiencia-confronto {
+			max-width: 30rem;
+		}
+	}
+</style>

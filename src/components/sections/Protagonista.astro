@@ -1,0 +1,94 @@
+---
+import BeneditaPortrait from '../motifs/BeneditaPortrait.astro';
+---
+
+<section class="protagonista" aria-labelledby="protagonista-heading">
+	<div class="protagonista-portrait reveal">
+		<BeneditaPortrait />
+	</div>
+
+	<div class="protagonista-text">
+		<h2 id="protagonista-heading" class="reveal">Benedita tem um preço por dia.</h2>
+
+		<p class="reveal">
+			Vinte moedas. É o que ela deve entregar ao feitor toda tarde, às seis horas, esteja onde
+			estiver. O dinheiro sai do que ela vendeu naquele dia. O que sobra é dela.
+		</p>
+
+		<p class="reveal">
+			Foi assim que muitas mulheres compraram a própria liberdade em Salvador, uma moeda de
+			cada vez, ao longo de anos. Era possível. Era raro. E era um cálculo que consumia a vida
+			inteira.
+		</p>
+
+		<p class="reveal protagonista-beat">Benedita já fez esse cálculo. Ela sabe quantos dias faltam.</p>
+
+		<p class="reveal">
+			O que ela não sabia é que, em algum momento entre a Barroquinha e o Porto, alguém ia lhe
+			pedir para levar uma carta.
+		</p>
+
+		<p class="reveal protagonista-micro">Benedita é uma personagem de ficção. Quase tudo ao redor dela não é.</p>
+	</div>
+</section>
+
+<style>
+	.protagonista {
+		max-width: 64rem;
+		margin-inline: auto;
+		padding: var(--space-3xl) var(--space-m);
+		display: grid;
+		grid-template-columns: minmax(12rem, 16rem) 1fr;
+		gap: var(--space-2xl);
+		align-items: start;
+	}
+
+	.protagonista-portrait {
+		position: sticky;
+		top: var(--space-xl);
+	}
+
+	.protagonista-text {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-m);
+		max-width: 46ch;
+	}
+
+	.protagonista-text h2 {
+		font-size: var(--step-4);
+		margin-bottom: var(--space-xs);
+	}
+
+	.protagonista-text p {
+		font-size: var(--step-1);
+		color: var(--ink-muted);
+	}
+
+	.protagonista-beat {
+		color: var(--highlight);
+		font-family: var(--font-display);
+		font-style: italic;
+		font-size: var(--step-2);
+	}
+
+	.protagonista-micro {
+		font-size: var(--step--1);
+		color: var(--ink-muted);
+		padding-top: var(--space-m);
+		border-top: 1px solid var(--line);
+	}
+
+	@media (max-width: 52rem) {
+		.protagonista {
+			grid-template-columns: 1fr;
+			gap: var(--space-l);
+		}
+
+		.protagonista-portrait {
+			position: static;
+			width: min(46vw, 13rem);
+			margin-inline: auto;
+		}
+	}
+</style>

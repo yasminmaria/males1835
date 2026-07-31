@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/sections/Hero.astro';
+import Premissa from '../components/sections/Premissa.astro';
+import Protagonista from '../components/sections/Protagonista.astro';
+import Experiencia from '../components/sections/Experiencia.astro';
+import Dilema from '../components/sections/Dilema.astro';
+import Cidade from '../components/sections/Cidade.astro';
+import HistoriaReal from '../components/sections/HistoriaReal.astro';
+import PorQueAgora from '../components/sections/PorQueAgora.astro';
+import OQueConstruimos from '../components/sections/OQueConstruimos.astro';
+import Patrocinio from '../components/sections/Patrocinio.astro';
+import Participe from '../components/sections/Participe.astro';
+import Equipe from '../components/sections/Equipe.astro';
+import Convite from '../components/sections/Convite.astro';
+import Divider from '../components/Divider.astro';
+---
+
+<Layout
+	title="Ganhadeiras — a ancestralidade não decora o jogo, é o jogo"
+	description="Salvador, janeiro de 1835. Faltam doze dias. Ganhadeiras transforma a memória, a história e os símbolos sagrados da Bahia afro-brasileira em mecânica jogável. Conheça o universo e peça o material completo."
+>
+	<main>
+		<Hero />
+		<Divider glyph="rampa-do-mercado" label="Divisão de seção" />
+		<Premissa />
+		<Divider glyph="barroquinha" label="Divisão de seção" />
+		<Protagonista />
+		<Divider glyph="agua-de-meninos" label="Divisão de seção" />
+		<Experiencia />
+		<Divider glyph="pelourinho" label="Divisão de seção" />
+		<Dilema />
+		<Divider glyph="vitoria" label="Divisão de seção" />
+		<Cidade />
+		<Divider glyph="bonfim" label="Divisão de seção" />
+		<HistoriaReal />
+		<Divider glyph="porto-e-calcada" label="Divisão de seção" />
+
+		<div id="apoiar-marker"></div>
+		<PorQueAgora />
+		<Divider glyph="rampa-do-mercado" label="Divisão de seção" />
+		<OQueConstruimos />
+		<Divider glyph="vitoria" label="Divisão de seção" />
+		<Patrocinio />
+		<Divider glyph="barroquinha" label="Divisão de seção" />
+		<Participe />
+		<Divider glyph="agua-de-meninos" label="Divisão de seção" />
+		<Equipe />
+		<Divider glyph="pelourinho" label="Divisão de seção" />
+		<Convite />
+	</main>
+	<footer class="site-footer">
+		<p>Ganhadeiras — projeto em desenvolvimento.</p>
+	</footer>
+
+	<a class="apoiar-float" href="#convite" data-apoiar-float>Apoiar o projeto</a>
+</Layout>
+
+<style>
+	.site-footer {
+		text-align: center;
+		padding: var(--space-l) var(--space-m) var(--space-xl);
+		color: var(--ink-muted);
+		font-size: var(--step--1);
+	}
+
+	.apoiar-float {
+		position: fixed;
+		right: var(--space-m);
+		bottom: var(--space-m);
+		z-index: var(--z-sticky);
+		background: var(--highlight);
+		color: var(--bg);
+		font-family: var(--font-body);
+		font-weight: 600;
+		font-size: var(--step--1);
+		letter-spacing: 0.01em;
+		text-decoration: none;
+		padding: var(--space-xs) var(--space-m);
+		border: 1px solid var(--highlight);
+		opacity: 0;
+		transform: translateY(0.5rem);
+		pointer-events: none;
+		transition: opacity 0.4s var(--ease-out-quart), transform 0.4s var(--ease-out-quart);
+	}
+
+	.apoiar-float.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+		pointer-events: auto;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.apoiar-float {
+			transition: opacity 0.2s ease-out;
+		}
+	}
+
+	@media (max-width: 30rem) {
+		.apoiar-float {
+			left: var(--space-m);
+			right: var(--space-m);
+			text-align: center;
+		}
+	}
+</style>
+
+<script>
+	const marker = document.getElementById('apoiar-marker');
+	const floatBtn = document.querySelector<HTMLElement>('[data-apoiar-float]');
+	const convite = document.getElementById('convite');
+
+	if (marker && floatBtn) {
+		let ticking = false;
+
+		const updateFloatVisibility = () => {
+			const pastMarker = marker.getBoundingClientRect().top < 0;
+			const nearConvite = convite ? convite.getBoundingClientRect().top < window.innerHeight * 0.4 : false;
+			floatBtn.classList.toggle('is-visible', pastMarker && !nearConvite);
+			ticking = false;
+		};
+
+		updateFloatVisibility();
+
+		window.addEventListener(
+			'scroll',
+			() => {
+				if (!ticking) {
+					requestAnimationFrame(updateFloatVisibility);
+					ticking = true;
+				}
+			},
+			{ passive: true }
+		);
+		window.addEventListener('resize', updateFloatVisibility);
+	}
+</script>

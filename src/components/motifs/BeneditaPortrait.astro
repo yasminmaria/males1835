@@ -1,0 +1,71 @@
+---
+interface Props {
+	class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<svg
+	class={`motif-portrait ${className}`}
+	viewBox="0 0 200 240"
+	fill="none"
+	role="img"
+	aria-labelledby="portrait-title"
+	data-motif-draw
+>
+	<title id="portrait-title">
+		Retrato de Benedita, personagem de ficção do jogo, olhando para fora do quadro em avaliação
+	</title>
+
+	<!-- silhueta: ombros, pescoço, rosto e turbante, todos na mesma cor cheia -->
+	<polygon fill="currentColor" points="34,240 166,240 150,192 50,192" />
+	<rect fill="currentColor" x="84" y="170" width="32" height="26" />
+	<path
+		fill="currentColor"
+		d="M62,150 C56,128 58,102 72,84 C84,68 100,60 116,62 C132,64 144,76 148,94 C152,112 148,132 138,146 C128,160 112,168 96,166 C80,164 68,158 62,150 Z"
+	/>
+	<path
+		fill="currentColor"
+		d="M58,96 C54,72 72,50 100,46 C126,42 148,56 154,80 C156,90 154,98 148,104 C150,86 138,68 116,64 C94,60 74,74 68,92 C66,98 64,102 60,104 C58,102 58,99 58,96 Z"
+	/>
+	<circle fill="currentColor" cx="56" cy="72" r="14" />
+	<path fill="currentColor" d="M50,60 C46,50 52,42 60,44 C56,52 56,60 58,66 Z" />
+
+	<!-- entalhe: dobras do turbante -->
+	<g stroke="var(--bg)" stroke-width="2" stroke-linecap="round">
+		<path d="M72,68 C90,60 118,58 138,68" />
+		<path d="M66,84 C90,74 122,72 146,84" />
+	</g>
+
+	<!-- entalhe: rosto em avaliação, olhar fora do quadro -->
+	<path fill="var(--bg)" d="M112,110 C118,106 128,106 134,111 C128,116 118,116 112,110 Z" />
+	<circle fill="currentColor" cx="124" cy="110" r="1.6" />
+	<path stroke="var(--bg)" stroke-width="3" stroke-linecap="round" d="M110,102 L136,100" />
+	<path stroke="var(--bg)" stroke-width="3" stroke-linecap="round" d="M112,140 C118,144 126,144 132,140" />
+	<path
+		stroke="var(--bg)"
+		stroke-width="2"
+		stroke-linecap="round"
+		opacity="0.7"
+		d="M104,118 C100,126 100,136 106,144"
+	/>
+
+	<!-- fio de contas -->
+	<g fill="var(--bg)">
+		<circle cx="88" cy="182" r="2.4" />
+		<circle cx="94" cy="184" r="2.4" />
+		<circle cx="100" cy="185" r="2.4" />
+		<circle cx="106" cy="184" r="2.4" />
+		<circle cx="112" cy="182" r="2.4" />
+	</g>
+</svg>
+
+<style>
+	.motif-portrait {
+		color: var(--highlight);
+		width: 100%;
+		height: auto;
+		overflow: visible;
+	}
+</style>

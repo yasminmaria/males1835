@@ -1,0 +1,78 @@
+---
+---
+
+<section class="agora" aria-labelledby="agora-heading">
+	<svg class="agora-mark" viewBox="0 0 120 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5">
+		{Array.from({ length: 5 }, (_, i) => <rect x={i * 24} y="0" width="20" height="20" fill={i % 2 === 0 ? 'currentColor' : 'none'} />)}
+	</svg>
+
+	<h2 id="agora-heading" class="reveal">O Brasil joga muito e se vê pouco.</h2>
+
+	<p class="reveal">
+		O país é um dos maiores mercados de jogos do mundo e tem uma indústria criativa que
+		cresceu rápido na última década. Ainda assim, a quantidade de jogos brasileiros que tratam
+		da nossa própria história, com pesquisa séria e ambição estética, cabe em uma lista curta.
+	</p>
+
+	<p class="reveal">
+		Existe, ao mesmo tempo, um público global consolidado para jogos que fazem exatamente
+		isso. <em>This War of Mine</em> levou milhões de pessoas a pensar sobre a vida civil na
+		guerra. <em>Papers, Please</em> fez do trabalho burocrático uma experiência moral. São
+		jogos pequenos, feitos por equipes pequenas, que alcançaram público, crítica e sala de
+		aula.
+	</p>
+
+	<h3 class="reveal">Falta o nosso.</h3>
+
+	<p class="reveal">
+		Ganhadeiras é desenhado para ocupar esse espaço com um episódio da história brasileira que
+		tem tudo para funcionar como jogo: uma pressão econômica clara, uma rede clandestina, um
+		relógio correndo e uma protagonista cuja liberdade de movimento era, ao mesmo tempo, sua
+		ferramenta e seu risco.
+	</p>
+</section>
+
+<style>
+	.agora {
+		max-width: 40rem;
+		margin-inline: auto;
+		padding: var(--space-3xl) var(--space-m);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		gap: var(--space-l);
+	}
+
+	.agora-mark {
+		width: 5.5rem;
+		height: auto;
+		color: var(--line-strong);
+		margin-bottom: var(--space-s);
+	}
+
+	.agora h2 {
+		font-size: var(--step-5);
+		max-width: 16ch;
+	}
+
+	.agora h3 {
+		font-family: var(--font-display);
+		font-style: italic;
+		font-weight: 400;
+		font-size: var(--step-4);
+		color: var(--highlight);
+		margin-top: var(--space-m);
+	}
+
+	.agora p {
+		font-size: var(--step-1);
+		color: var(--ink-muted);
+		max-width: 52ch;
+	}
+
+	.agora p em {
+		font-style: italic;
+		color: var(--ink);
+	}
+</style>

@@ -1,0 +1,84 @@
+---
+const blocks = [
+	{
+		label: 'Fundação',
+		note: 'Bio da fundadora a inserir aqui — trajetória, relação com a cultura baiana e experiência relevante para o projeto.',
+	},
+	{
+		label: 'Parceria cultural',
+		note: 'Nome da consultoria ou parceria cultural/acadêmica a confirmar aqui, assim que formalizada.',
+	},
+];
+---
+
+<section class="equipe" aria-labelledby="equipe-heading">
+	<h2 id="equipe-heading" class="reveal">Equipe & parcerias</h2>
+	<p class="equipe-intro reveal">
+		O Ganhadeiras é conduzido por quem entende que essa cultura não se resume — se estuda, se
+		consulta, se credita.
+	</p>
+
+	<div class="blocks">
+		{
+			blocks.map((block) => (
+				<div class="block reveal">
+					<h3>{block.label}</h3>
+					<p class="block-note">
+						<span aria-hidden="true">［ </span>
+						{block.note}
+						<span aria-hidden="true"> ］</span>
+					</p>
+				</div>
+			))
+		}
+	</div>
+</section>
+
+<style>
+	.equipe {
+		max-width: 56rem;
+		margin-inline: auto;
+		padding: var(--space-3xl) var(--space-m);
+	}
+
+	.equipe h2 {
+		font-size: var(--step-4);
+	}
+
+	.equipe-intro {
+		font-size: var(--step-1);
+		color: var(--ink-muted);
+		max-width: 40ch;
+		margin-top: var(--space-m);
+		margin-bottom: var(--space-2xl);
+	}
+
+	.blocks {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+		gap: var(--space-xl);
+	}
+
+	.block {
+		padding-top: var(--space-m);
+		border-top: 1px dashed var(--line-strong);
+	}
+
+	.block h3 {
+		font-size: var(--step-1);
+		color: var(--ink-muted);
+		font-family: var(--font-body);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		margin-bottom: var(--space-s);
+	}
+
+	.block-note {
+		font-family: var(--font-display);
+		font-style: italic;
+		color: var(--ink-muted);
+		font-size: var(--step-1);
+		line-height: 1.55;
+	}
+</style>

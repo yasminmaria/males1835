@@ -1,0 +1,91 @@
+---
+import MapaConspiracao from '../motifs/MapaConspiracao.astro';
+---
+
+<section class="premissa" id="premissa" aria-labelledby="premissa-heading">
+	<div class="premissa-text">
+		<h2 id="premissa-heading" class="reveal">Na madrugada de 25 de janeiro, a cidade pegou fogo.</h2>
+
+		<p class="reveal">
+			Centenas de africanos muçulmanos saíram às ruas de Salvador armados com o que tinham.
+			Foi a maior insurreição de escravizados urbanos já registrada nas Américas, e ela foi
+			derrotada antes do amanhecer.
+		</p>
+
+		<p class="reveal">Essa parte da história está nos livros.</p>
+
+		<p class="reveal">
+			O que quase nunca está é o que veio antes. Os doze dias em que as mensagens andaram pela
+			cidade sem que ninguém as visse andar. Elas não foram levadas por soldados nem por
+			mensageiros. Foram levadas por mulheres que vendiam comida na rua, porque eram as únicas
+			pessoas que podiam ir a qualquer lugar sem precisar explicar o motivo.
+		</p>
+
+		<p class="reveal premissa-beat">Ninguém escreveu os nomes delas.</p>
+
+		<h3 class="reveal">É nesses doze dias que o jogo acontece.</h3>
+	</div>
+
+	<div class="premissa-mapa reveal">
+		<MapaConspiracao />
+	</div>
+</section>
+
+<style>
+	.premissa {
+		max-width: 68rem;
+		margin-inline: auto;
+		padding: var(--space-3xl) var(--space-m);
+		display: grid;
+		grid-template-columns: 1fr minmax(18rem, 24rem);
+		gap: var(--space-2xl);
+		align-items: start;
+	}
+
+	.premissa-text {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-m);
+		max-width: 46ch;
+	}
+
+	.premissa-text h2 {
+		font-size: var(--step-4);
+		margin-bottom: var(--space-xs);
+	}
+
+	.premissa-text p {
+		font-size: var(--step-1);
+		color: var(--ink-muted);
+	}
+
+	.premissa-beat {
+		color: var(--ink);
+		font-family: var(--font-display);
+		font-style: italic;
+		font-size: var(--step-2);
+	}
+
+	.premissa-text h3 {
+		font-size: var(--step-2);
+		color: var(--highlight);
+		margin-top: var(--space-s);
+	}
+
+	.premissa-mapa {
+		position: sticky;
+		top: var(--space-xl);
+	}
+
+	@media (max-width: 56rem) {
+		.premissa {
+			grid-template-columns: 1fr;
+			gap: var(--space-xl);
+		}
+
+		.premissa-mapa {
+			position: static;
+			order: -1;
+		}
+	}
+</style>

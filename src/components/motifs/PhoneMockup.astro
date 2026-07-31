@@ -1,0 +1,69 @@
+---
+interface Props {
+	class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<svg
+	class={`motif-phones ${className}`}
+	viewBox="0 0 520 360"
+	fill="none"
+	role="img"
+	aria-labelledby="phones-title"
+	data-motif-draw
+>
+	<title id="phones-title">
+		Três aparelhos em perspectiva leve exibindo esboços conceituais de tela: a montagem do
+		tabuleiro, o mapa com o risco do trajeto e um momento de diálogo com retrato de personagem
+	</title>
+
+	<!-- telefone 1: montagem do tabuleiro -->
+	<g transform="translate(16,40) rotate(-6)">
+		<rect x="0" y="0" width="150" height="280" rx="14" stroke="currentColor" stroke-width="3" />
+		<rect x="10" y="14" width="130" height="252" stroke="currentColor" stroke-width="1.5" />
+		<g stroke="currentColor" stroke-width="1.5">
+			{Array.from({ length: 10 }, (_, i) => {
+				const col = i % 5;
+				const row = Math.floor(i / 5);
+				return <rect x={18 + col * 23} y={40 + row * 30} width="19" height="24" fill={i < 3 ? 'currentColor' : 'none'} />;
+			})}
+		</g>
+		<line x1="18" y1="230" x2="132" y2="230" stroke="currentColor" stroke-width="1" opacity="0.6" />
+		<rect x="18" y="242" width="60" height="10" stroke="currentColor" stroke-width="1.2" />
+	</g>
+
+	<!-- telefone 2: mapa com risco do trajeto -->
+	<g transform="translate(185,14)">
+		<rect x="0" y="0" width="150" height="280" rx="14" stroke="currentColor" stroke-width="3" />
+		<rect x="10" y="14" width="130" height="252" stroke="currentColor" stroke-width="1.5" />
+		<path d="M24,50 C50,90 40,130 70,150 C100,170 90,210 120,230" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 4" fill="none" />
+		<circle cx="24" cy="50" r="4" fill="currentColor" />
+		<circle cx="70" cy="150" r="4" fill="currentColor" />
+		<circle cx="120" cy="230" r="5" stroke="currentColor" stroke-width="2" />
+		<rect x="18" y="244" width="114" height="10" stroke="currentColor" stroke-width="1.2" />
+		<rect x="18" y="244" width="74" height="10" fill="currentColor" />
+	</g>
+
+	<!-- telefone 3: diálogo com retrato -->
+	<g transform="translate(354,40) rotate(6)">
+		<rect x="0" y="0" width="150" height="280" rx="14" stroke="currentColor" stroke-width="3" />
+		<rect x="10" y="14" width="130" height="252" stroke="currentColor" stroke-width="1.5" />
+		<circle cx="75" cy="86" r="34" fill="currentColor" />
+		<path d="M58,90 C64,86 72,86 78,90" stroke="var(--bg)" stroke-width="2.5" stroke-linecap="round" fill="none" />
+		<rect x="20" y="140" width="110" height="1.5" fill="currentColor" opacity="0.5" />
+		<rect x="20" y="156" width="110" height="10" stroke="currentColor" stroke-width="1.2" />
+		<rect x="20" y="172" width="80" height="10" stroke="currentColor" stroke-width="1.2" />
+		<rect x="20" y="200" width="110" height="26" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3" />
+	</g>
+</svg>
+
+<style>
+	.motif-phones {
+		color: var(--highlight);
+		width: 100%;
+		height: auto;
+		overflow: visible;
+	}
+</style>

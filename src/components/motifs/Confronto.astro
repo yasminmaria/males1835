@@ -1,0 +1,86 @@
+---
+interface Props {
+	class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+
+const rays = Array.from({ length: 20 }, (_, i) => {
+	const angle = (i / 20) * Math.PI * 2;
+	const inner = 30;
+	const outer = i % 2 === 0 ? 96 : 70;
+	const cx = 192;
+	const cy = 96;
+	return {
+		x1: cx + Math.cos(angle) * inner,
+		y1: cy + Math.sin(angle) * inner,
+		x2: cx + Math.cos(angle) * outer,
+		y2: cy + Math.sin(angle) * outer,
+	};
+});
+---
+
+<svg
+	class={`motif-confronto ${className}`}
+	viewBox="0 0 300 400"
+	fill="none"
+	role="img"
+	aria-labelledby="confronto-title"
+>
+	<title id="confronto-title">
+		Vista de baixo para cima: a borda do tabuleiro desfocada em primeiro plano, e ao fundo, em
+		foco, a silhueta de um militar com lampião a contraluz
+	</title>
+
+	<!-- halo do lampião -->
+	<g stroke="currentColor" stroke-width="1.5" opacity="0.55">
+		{rays.map((r) => (
+			<line x1={r.x1} y1={r.y1} x2={r.x2} y2={r.y2} />
+		))}
+	</g>
+	<circle cx="192" cy="96" r="18" fill="currentColor" opacity="0.9" />
+
+	<!-- silhueta do militar, em foco -->
+	<g fill="currentColor">
+		<polygon points="150,132 190,108 232,132 214,148 168,148" />
+		<rect x="168" y="150" width="46" height="8" />
+		<ellipse cx="191" cy="182" rx="30" ry="42" />
+		<polygon points="161,208 221,208 232,300 216,300 200,232 182,232 166,300 150,300" />
+		<rect x="176" y="292" width="18" height="70" />
+		<rect x="196" y="292" width="18" height="70" />
+		<polygon points="214,166 236,120 246,124 228,172" />
+		<path d="M234,110 L246,112 L246,138 L232,140 Z" />
+		<line x1="246" y1="112" x2="256" y2="106" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+	</g>
+
+	<!-- tabuleiro e pano, primeiro plano desfocado -->
+	<g class="foreground-blur" fill="var(--surface-2)">
+		<polygon points="-10,400 -10,320 60,300 160,296 280,312 310,340 310,400" />
+		<path
+			d="M-10,330 C40,314 90,312 140,318 C190,324 240,320 280,306"
+			stroke="var(--line-strong)"
+			stroke-width="6"
+			fill="none"
+			stroke-linecap="round"
+		/>
+	</g>
+</svg>
+
+<style>
+	.motif-confronto {
+		color: var(--highlight);
+		width: 100%;
+		height: auto;
+		overflow: visible;
+	}
+
+	.foreground-blur {
+		filter: blur(3.5px);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.foreground-blur {
+			filter: blur(2px);
+		}
+	}
+</style>

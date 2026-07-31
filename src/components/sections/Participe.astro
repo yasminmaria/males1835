@@ -1,0 +1,131 @@
+---
+const trilhas = [
+	{
+		titulo: 'Se você faz',
+		texto:
+			'Estamos formando a equipe criativa e técnica do projeto. Interessa especialmente quem trabalha com ilustração e pintura digital, programação em TypeScript, design de som e trilha, roteiro e escrita para jogos.',
+		nota: 'Não é necessário ter feito jogo antes. É necessário ter portfólio e interesse real pelo assunto.',
+		cta: 'Enviar portfólio',
+	},
+	{
+		titulo: 'Se você joga',
+		texto:
+			'As primeiras versões jogáveis vão precisar de gente disposta a jogar mal, travar, se irritar e contar por quê. Quem entra agora acompanha o desenvolvimento por dentro e joga antes de todo mundo.',
+		nota: '',
+		cta: 'Entrar na lista de testes',
+	},
+	{
+		titulo: 'Se você recebe público',
+		texto:
+			'Escolas, museus, centros culturais, coletivos e bibliotecas que queiram receber sessões abertas, oficinas ou o evento de lançamento. Interessa especialmente quem atua em Salvador e no Recôncavo.',
+		nota: '',
+		cta: 'Falar sobre uma parceria',
+	},
+];
+---
+
+<section class="participe" aria-labelledby="participe-heading">
+	<div class="participe-intro">
+		<h2 id="participe-heading" class="reveal">Este jogo ainda está sendo feito. Talvez com você.</h2>
+		<p class="reveal">A produção está em formação e há espaço para gente que queira construir isso desde o começo.</p>
+	</div>
+
+	<div class="trilhas">
+		{
+			trilhas.map((t) => (
+				<article class="trilha reveal">
+					<h3>{t.titulo}</h3>
+					<p>{t.texto}</p>
+					{t.nota && <p class="trilha-nota">{t.nota}</p>}
+					<a class="btn btn-secondary" href="#convite">{t.cta}</a>
+				</article>
+			))
+		}
+	</div>
+</section>
+
+<style>
+	.participe {
+		max-width: 68rem;
+		margin-inline: auto;
+		padding: var(--space-3xl) var(--space-m);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2xl);
+	}
+
+	.participe-intro {
+		max-width: 42ch;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-m);
+	}
+
+	.participe-intro h2 {
+		font-size: var(--step-4);
+	}
+
+	.participe-intro p {
+		font-size: var(--step-1);
+		color: var(--ink-muted);
+	}
+
+	.trilhas {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+		gap: 0;
+		border-top: 1px solid var(--line);
+		border-left: 1px solid var(--line);
+	}
+
+	.trilha {
+		padding: var(--space-l) var(--space-m);
+		border-right: 1px solid var(--line);
+		border-bottom: 1px solid var(--line);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-s);
+	}
+
+	.trilha h3 {
+		font-size: var(--step-2);
+		color: var(--highlight);
+		font-family: var(--font-display);
+	}
+
+	.trilha p {
+		color: var(--ink-muted);
+		font-size: var(--step-0);
+	}
+
+	.trilha-nota {
+		font-size: var(--step--1);
+		font-style: italic;
+	}
+
+	.btn-secondary {
+		display: inline-flex;
+		align-self: flex-start;
+		margin-top: var(--space-xs);
+		padding: var(--space-2xs) var(--space-m);
+		font-family: var(--font-body);
+		font-weight: 600;
+		font-size: var(--step--1);
+		letter-spacing: 0.01em;
+		text-decoration: none;
+		color: var(--highlight);
+		border: 1.5px solid var(--highlight);
+		transition: background 0.3s var(--ease-out-quart), color 0.3s var(--ease-out-quart);
+	}
+
+	.btn-secondary:hover {
+		background: var(--highlight);
+		color: var(--bg);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.btn-secondary {
+			transition: none;
+		}
+	}
+</style>
